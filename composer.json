@@ -1,7 +1,8 @@
 {
     "name": "ramsey/conventional-commits",
-    "type": "library",
     "description": "A PHP library for creating and validating commit messages according to the Conventional Commits specification. Includes a CaptainHook plugin!",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "captainhook",
         "commit",
@@ -12,7 +13,6 @@
         "hook",
         "plugin"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Ben Ramsey",
@@ -24,7 +24,6 @@
         "php": "^7.4 || ^8",
         "ext-json": "*",
         "composer-runtime-api": "^1.1 || ^2",
-        "captainhook/captainhook": "^5.3.3",
         "composer/composer": "^1.10.23 || ^2.1.9",
         "jawira/case-converter": "^3.3",
         "opis/json-schema": "^2.0",
@@ -39,6 +38,25 @@
         "spatie/phpunit-snapshot-assertions": "^4.2",
         "symfony/process": "^5.1"
     },
+    "suggest": {
+        "captainhook/captainhook": "Allows automatically installing git hooks for linting commit messages"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Ramsey\\CaptainHook\\": "src/CaptainHook/",
+            "Ramsey\\ConventionalCommits\\": "src/ConventionalCommits/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ramsey\\Test\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/conventional-commits"
+    ],
     "config": {
         "sort-packages": true
     },
@@ -56,22 +74,6 @@
             "command-prefix": "dev"
         }
     },
-    "autoload": {
-        "psr-4": {
-            "Ramsey\\CaptainHook\\": "src/CaptainHook/",
-            "Ramsey\\ConventionalCommits\\": "src/ConventionalCommits/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Ramsey\\Test\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "bin": [
-        "bin/conventional-commits"
-    ],
     "scripts": {
         "test-functional": "./tests/bash-test tests/functional-tests.sh"
     }
